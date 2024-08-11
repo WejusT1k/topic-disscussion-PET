@@ -1,3 +1,12 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "indent": ["error", "tab"],
+    "max-len": ["error", { "code": 120 }],
+    "react/jsx-first-prop-new-line": ["error", "multiprop"],
+    "react/jsx-max-props-per-line": [
+      2,
+      { "maximum": 1, "when": "multiline" }
+    ]
+  }
 }
