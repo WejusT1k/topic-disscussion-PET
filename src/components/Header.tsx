@@ -13,7 +13,9 @@ export default async function Header(){
 	return (
 		<Navbar className='shadow mb-6'>
 			<NavbarBrand>
-				<Link href={paths.homePath()} className='font-bold'>
+				<Link
+					href={paths.homePath()}
+					className='font-bold'>
 					DissTopic
 				</Link>
 			</NavbarBrand>
