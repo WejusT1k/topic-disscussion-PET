@@ -1,11 +1,12 @@
-import type { Comment } from '@prisma/client';
+import { cache } from 'react';
 import { db } from '@/db';
 
 export type CommentWithAuthor = Awaited<
 	ReturnType<typeof fetchCommentsByPostId>
 >[number]
 
-export async function fetchCommentsByPostId(postId: string){
+export const fetchCommentsByPostId = cache((postId: string) => {
+	console.log('request');
 	return db.comment.findMany({
 		where: { postId },
 		include: {
@@ -17,4 +18,4 @@ export async function fetchCommentsByPostId(postId: string){
 			}
 		}
 	})
-}
+});
