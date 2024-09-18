@@ -1,5 +1,4 @@
 import { db } from '@/db';
-import type { PostWithData } from '@/db/queries/posts';
 import { notFound } from 'next/navigation';
 
 interface PostShowProps {

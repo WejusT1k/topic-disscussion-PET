@@ -19,6 +19,11 @@ export type PostWithData = Awaited<ReturnType<typeof fetchPostsByTopicSlug>>[num
 export function fetchPostsByTopicSlug(slug?: string) {
 	return db.post.findMany({
 		where: { topic: { slug } },
+		orderBy: [{
+			comments: {
+				_count: 'desc'
+			}
+		}],
 		include: {
 			topic: { select: { slug: true } },
 			user: { select: { name: true } },

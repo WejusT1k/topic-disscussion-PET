@@ -1,9 +1,11 @@
 import CommentCreateForm from '@/components/comments/CommentCreateForm';
 import CommentList from '@/components/comments/CommentList';
 import PostShow from '@/components/posts/PostShow';
+import PostShowSkeleton from '@/components/posts/PostShowSkeleton';
 import { fetchCommentsByPostId } from '@/db/queries/comments';
 import paths from '@/paths';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 interface PostShowPageProps {
 	params: {
@@ -17,7 +19,9 @@ export default function PostShowPage({ params }: PostShowPageProps){
 		<Link href={paths.topicShowPath(params.slug)}>
 			{'< '} Back to {params.slug}
 		</Link>
-		<PostShow postId={params.postId}/>
+		<Suspense fallback={<PostShowSkeleton />}>
+			<PostShow postId={params.postId}/>
+		</Suspense>
 		<CommentCreateForm postId={params.postId}/>
 		<CommentList postId={params.postId}/>
 	</div>

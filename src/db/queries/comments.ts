@@ -6,7 +6,6 @@ export type CommentWithAuthor = Awaited<
 >[number]
 
 export const fetchCommentsByPostId = cache((postId: string) => {
-	console.log('request');
 	return db.comment.findMany({
 		where: { postId },
 		include: {
