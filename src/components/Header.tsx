@@ -4,10 +4,11 @@ import {
 	NavbarBrand,
 	NavbarContent,
 	NavbarItem,
-	Input,
 } from '@nextui-org/react';
+import { Suspense } from 'react';
 import paths from '@/paths';
 import HeaderAuth from './HeaderAuth';
+import SearchInput from './SearchInput';
 
 export default async function Header(){ 
 	return (
@@ -21,7 +22,9 @@ export default async function Header(){
 			</NavbarBrand>
 			<NavbarContent justify='center'>
 				<NavbarItem>
-					<Input placeholder='Search...'/>
+					<Suspense fallback={<>Loading...</>}>
+						<SearchInput />
+					</Suspense>
 				</NavbarItem>
 			</NavbarContent>
 

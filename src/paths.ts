@@ -10,6 +10,9 @@ const paths = {
 	},
 	postShowPath(topicSlug: string, postId: string){
 		return `/topics/${topicSlug}/posts/${postId}`;
+	},
+	searchPath(term: string){
+		return `/search?term=${term}`
 	}
 }
 
